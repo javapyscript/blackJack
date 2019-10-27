@@ -1,13 +1,13 @@
 <div class="row flexBox">
     <div class="col-4">
         <h6 class="wallet">Wallet</h6>
-        <span [textContent]="1000 | currency" class="currAmountSpan"></span>
+        <span [textContent]="this.cardData.wallet | currency" class="currAmountSpan"></span>
     </div>
     <div class="col-4">
         <h6 class="wallet">Current Bet</h6>
-        <span [textContent]="10 | currency" class="currAmountSpan"></span>
+        <span [textContent]="this.cardData.bet | currency" class="currAmountSpan"></span>
     </div>
     <div class="col-4">
-        <button (click)="this.placeBet()" nz-button nzGhost nzType="default">Place Bet</button>
+        <button [disabled]="this.cardData.gameActive" (click)="this.placeBet()" nz-button nzGhost nzType="default">Place Bet</button>
     </div>
 </div>

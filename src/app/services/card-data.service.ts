@@ -25,6 +25,9 @@ export class CardDataService {
   userScore = 0;
   dealerScore = 0;
   availableCards= [];
+  gameResult = "";
+  wallet = 1000;
+  bet = 10;
 
   reset(){
     this.availableCards = this.allCards.slice();
@@ -33,10 +36,51 @@ export class CardDataService {
     this.dealerCards = [];
     this.userScore = 0;
     this.dealerScore = 0;
-    this.availableCards= [];
+    this.gameResult = "";
   }
 
   constructor() { 
     this.availableCards = this.allCards.slice();
+  }
+
+  getRandomCard(identity){
+    let randomCard = this.availableCards.splice(Math.floor(Math.random()*this.availableCards.length),1)[0];
+    let cardScore:number = this.getCardScore(randomCard, identity);
+    if(identity === 'dealer'){
+      this.dealerCards.push(randomCard);
+      this.dealerScore += cardScore;
+    }
+    else{
+      this.userCards.push(randomCard);
+      this.userScore += cardScore;
+    }
+
+  }
+
+  getCardScore(cardID, identity){
+    let score = 0;
+    let cardValue = 0;
+    if(identity === 'dealer'){
+      score = this.dealerScore;
+    }
+    else{
+      score = this.userScore;
+    }
+    let royalCards = ['JC', 'JD', 'JH', 'JS',
+                      'QC', 'QD', 'QH', 'QS',
+                      'KC', 'KD', 'KH', 'KS',
+                      'AC', 'AD', 'AH', 'AS'];
+    if(royalCards.includes(cardID)){
+      cardValue =  10;
+      if(score + cardValue > 21 && ['AC', 'AD', 'AH', 'AS'].includes(cardID)){
+        cardValue = 1;
+      }
+    }
+    else{
+      console.log(cardID);
+      cardValue = parseInt(cardID.substring(0, cardID.length-1));
+    }
+    //score = score + cardValue;
+    return cardValue;
   }
 }

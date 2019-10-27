@@ -13,4 +13,40 @@ export class MainAreaComponent implements OnInit {
   ngOnInit() {
   }
 
+  hit(){
+    this.cardData.getRandomCard('user');
+    if(this.cardData.userScore > 21){
+      this.cardData.gameResult = "Bust";
+      //this.cardData.reset();
+    }
+  }
+
+  stay(){
+    while (this.cardData.dealerScore <= 17){
+      this.cardData.getRandomCard('dealer');
+    }
+      if(this.cardData.dealerScore < 22 && this.cardData.dealerScore > this.cardData.userScore){
+        this.cardData.gameResult = "You lose!";
+        
+      }
+      else if(this.cardData.dealerScore < 22 && this.cardData.dealerScore < this.cardData.userScore){
+        this.cardData.gameResult = "You win!";
+        this.cardData.wallet += this.cardData.bet * 2;
+      }
+      else if(this.cardData.dealerScore < 22 && this.cardData.dealerScore === this.cardData.userScore){
+        this.cardData.gameResult = "Draw!";
+        this.cardData.wallet += this.cardData.bet;
+      }
+      else if(this.cardData.dealerScore > 21){
+        this.cardData.gameResult = "You win!";
+        this.cardData.wallet += this.cardData.bet * 2;
+      }
+    
+    
+  }
+
+  reset(){
+    this.cardData.reset();
+  }
+
 }

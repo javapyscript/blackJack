@@ -4,21 +4,25 @@
     <h3 class="identity">Dealer ({{this.cardData.dealerScore}})</h3>
     <div class="row flexBox">
         <ng-container *ngFor="let dealerCard of this.cardData.dealerCards">
-            <app-card [cardURL]="'assets/cards/' + dealerCard + '.png'"></app-card>
+            <app-card [cardURL]="'./assets/cards/' + dealerCard + '.png'"></app-card>
         </ng-container>
     </div>
     <br>
     <h3 class="identity">You ({{this.cardData.userScore}})</h3>
     <div class="row flexBox">
         <ng-container *ngFor="let userCard of this.cardData.userCards">
-            <app-card [cardURL]="'assets/cards/' + userCard + '.png'"></app-card>
+            <app-card [cardURL]="'./assets/cards/' + userCard + '.png'"></app-card>
         </ng-container>
     </div>
     <br>
     <br>
     <div class="row flexBox">
-        <button (click)="this.hitCard()" nz-button nzType="default">Hit</button>
-        <button (click)="this.stayCard()" nz-button nzType="default">Stay</button>
-        <button nz-button nzType="default">Reset</button>
+        <button [disabled]="this.cardData.gameResult !== ''" (click)="hit()" nz-button nzType="default">Hit</button>
+        <button [disabled]="this.cardData.gameResult !== ''" (click)=stay() nz-button nzType="default">Stay</button>
+        <button [disabled]="this.cardData.gameResult === ''" (click)=reset() nz-button nzType="default">Reset</button>
+    </div>
+    <br>
+    <div class="flexBox">
+        {{this.cardData.gameResult}}
     </div>
 </div>
