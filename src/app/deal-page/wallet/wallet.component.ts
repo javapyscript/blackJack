@@ -19,7 +19,7 @@ export class WalletComponent implements OnInit {
     this.cardData.getRandomCard('dealer');
     this.cardData.getRandomCard('user');
     
-    this.cardData.wallet -= this.cardData.bet;
+    //this.cardData.wallet -= this.cardData.bet;
     if(this.cardData.userScore > 21){
       this.cardData.gameResult = "Bust";
       

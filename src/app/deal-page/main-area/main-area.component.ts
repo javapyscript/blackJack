@@ -27,19 +27,20 @@ export class MainAreaComponent implements OnInit {
     }
       if(this.cardData.dealerScore < 22 && this.cardData.dealerScore > this.cardData.userScore){
         this.cardData.gameResult = "You lose!";
+        this.cardData.wallet -= this.cardData.bet;
         
       }
       else if(this.cardData.dealerScore < 22 && this.cardData.dealerScore < this.cardData.userScore){
         this.cardData.gameResult = "You win!";
-        this.cardData.wallet += this.cardData.bet * 2;
+        this.cardData.wallet += this.cardData.bet;
       }
       else if(this.cardData.dealerScore < 22 && this.cardData.dealerScore === this.cardData.userScore){
         this.cardData.gameResult = "Draw!";
-        this.cardData.wallet += this.cardData.bet;
+        //this.cardData.wallet += this.cardData.bet;
       }
       else if(this.cardData.dealerScore > 21){
         this.cardData.gameResult = "You win!";
-        this.cardData.wallet += this.cardData.bet * 2;
+        this.cardData.wallet += this.cardData.bet;
       }
     
     
