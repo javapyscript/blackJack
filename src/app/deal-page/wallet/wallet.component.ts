@@ -14,6 +14,9 @@ export class WalletComponent implements OnInit {
   }
 
   placeBet(){
+    if(this.cardData.bet == null){
+      return;
+    }
     this.cardData.gameActive = true;
     this.cardData.getRandomCard('user');
     this.cardData.getRandomCard('dealer');
@@ -25,6 +28,24 @@ export class WalletComponent implements OnInit {
       
       this.cardData.reset();
     }
+  }
+
+  validateInput(event){
+    if (event.target.validity.valid){
+      if(event.target.value > this.cardData.wallet){
+        event.target.value = '';
+      }
+      if(event.target.value === ''){
+        event.target.value = '';
+      }
+      
+    }
+    else{
+      event.target.value = '';
+    }
+      
+    
+    
   }
 
   
