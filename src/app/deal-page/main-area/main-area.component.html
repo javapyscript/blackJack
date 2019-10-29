@@ -16,13 +16,5 @@
     </div>
     <br>
     <br>
-    <div class="row flexBox">
-        <button [disabled]="this.cardData.gameResult !== ''" (click)="hit()" nz-button nzType="default">Hit</button>
-        <button [disabled]="this.cardData.gameResult !== ''" (click)=stay() nz-button nzType="default">Stay</button>
-        <button [disabled]="this.cardData.gameResult === ''" (click)=reset() nz-button nzType="default">Reset</button>
-    </div>
-    <br>
-    <div class="flexBox">
-        <h3 class="gameResult">{{this.cardData.gameResult}}</h3>
-    </div>
+    
 </div>

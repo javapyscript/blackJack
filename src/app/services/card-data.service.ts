@@ -68,11 +68,15 @@ export class CardDataService {
     }
     let royalCards = ['JC', 'JD', 'JH', 'JS',
                       'QC', 'QD', 'QH', 'QS',
-                      'KC', 'KD', 'KH', 'KS',
-                      'AC', 'AD', 'AH', 'AS'];
+                      'KC', 'KD', 'KH', 'KS'
+                      ];
+    let aceCards = ['AC', 'AD', 'AH', 'AS'];
     if(royalCards.includes(cardID)){
       cardValue =  10;
-      if(score + cardValue > 21 && ['AC', 'AD', 'AH', 'AS'].includes(cardID)){
+    }
+    else if(aceCards.includes(cardID)){
+      cardValue = 11;
+      if(score + cardValue > 21){
         cardValue = 1;
       }
     }

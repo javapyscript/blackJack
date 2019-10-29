@@ -15,6 +15,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { WalletComponent } from './deal-page/wallet/wallet.component';
 import { MainAreaComponent } from './deal-page/main-area/main-area.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { BetButtonsComponent } from './deal-page/bet-buttons/bet-buttons.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(en);
 
@@ -24,7 +26,8 @@ registerLocaleData(en);
     DealPageComponent,
     CardComponent,
     WalletComponent,
-    MainAreaComponent
+    MainAreaComponent,
+    BetButtonsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzStatisticModule,
     NzButtonModule,
-    NzInputModule
+    NzInputModule,
+    NzModalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

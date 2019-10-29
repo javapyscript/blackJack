@@ -6,10 +6,10 @@
                 <span [textContent]="this.cardData.wallet | currency" class="currAmountSpan"></span>
             </div>
             <div class="col-6">
-                <h6 class="wallet" style="margin-bottom: 0.4rem">Current Bet</h6>
+                <h6 class="wallet">Current Bet</h6>
                 <span *ngIf="this.cardData.gameActive" 
                     [textContent]="this.cardData.bet | currency" class="currAmountSpan"></span>
-                <input nz-input class="currAmountInput" *ngIf="!this.cardData.gameActive" id="currrentBet" 
+                <input style="margin-top: 0.4rem" nz-input class="currAmountInput" *ngIf="!this.cardData.gameActive" id="currrentBet" 
                     #currentBet (input)="validateInput($event)" type="number" pattern="[0-9]*" inputmode="numeric" min="1" max="this.cardData.wallet" [(ngModel)]="this.cardData.bet"/>
             </div>
         </div>
