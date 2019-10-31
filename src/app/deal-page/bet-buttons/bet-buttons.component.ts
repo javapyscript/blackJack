@@ -41,7 +41,7 @@ export class BetButtonsComponent implements OnInit {
   }
 
   stay(){
-    while (this.cardData.dealerScore <= 17){
+    while (this.cardData.dealerScore < 17){
       this.cardData.getRandomCard('dealer');
     }
       if(this.cardData.dealerScore < 22 && this.cardData.dealerScore > this.cardData.userScore){
@@ -63,6 +63,10 @@ export class BetButtonsComponent implements OnInit {
         this.cardData.gameResult = "You win!";
         this.cardData.wallet += this.cardData.bet;
         this.cardData.playAudio('./assets/audio/little_robot_sound_factory_Jingle_Win_Synth_06.mp3');
+      }
+
+      if(this.cardData.wallet < this.cardData.bet){
+        this.cardData.bet = this.cardData.wallet;
       }
     
     
