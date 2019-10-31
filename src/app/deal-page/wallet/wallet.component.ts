@@ -17,7 +17,9 @@ export class WalletComponent implements OnInit {
     if(this.cardData.bet == null){
       return;
     }
-    
+    if(this.cardData.wallet < this.cardData.bet){
+      return;
+    }
     this.cardData.gameActive = true;
     this.cardData.getRandomCard('user');
     this.cardData.getRandomCard('dealer');

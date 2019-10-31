@@ -41,7 +41,7 @@ export class BetButtonsComponent implements OnInit {
   }
 
   stay(){
-    while (this.cardData.dealerScore < 17){
+    while (this.cardData.dealerScore <= 17){
       this.cardData.getRandomCard('dealer');
     }
       if(this.cardData.dealerScore < 22 && this.cardData.dealerScore > this.cardData.userScore){
@@ -79,6 +79,9 @@ export class BetButtonsComponent implements OnInit {
 
   placeBet(){
     if(this.cardData.bet == null){
+      return;
+    }
+    if(this.cardData.wallet < this.cardData.bet){
       return;
     }
     this.cardData.gameActive = true;
