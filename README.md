@@ -1,3 +1,8 @@
+# Blackjack game in Angular. 
+[Demo link](https://javapyscript.github.io/blackJack/)
+
+
+
 # BlackJack
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
